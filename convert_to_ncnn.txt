@@ -1,0 +1,8 @@
+Converting a model to NCNN means to transform a PyTorch model (.pt) into a
+format that is optimized for ARM processors. This quantized version provides
+faster inference on embdedded devices and mobile devices, as well.
+
+-to convert the model, run the following script
+	python3 convert_to_ncnn.py
+
+see camera_config.txt for the next steps
