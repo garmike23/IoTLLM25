@@ -27,10 +27,10 @@ steps to create the environment:
 
 -create reu folder to host the environment
 	cd Desktop
-	mkdir reu
-
--create and activate the virtual environmnet within reu folder
-	python3 -m venv ~/Desktop/reu
+	mkdir IoTLLM25
+	cd IoTLLM25
+-create and activate the virtual environmnet within IoTLLM25 folder. (--system-site-packages) allows for utilization of libcamera and other vision libraries to use in real-time camera inferences.
+	python3 -m venv --system-site-packages IoTLLM25 
 	source bin/activate
 
 -update pip for easier troubleshooting and package compatibility
