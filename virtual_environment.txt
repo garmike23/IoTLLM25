@@ -1,0 +1,39 @@
+A virtual environmnet is a very useful asset to have in these type of scenarios because of the following reasons:
+
+-scalability: By creating it we can simply replicate this environments onto other Raspberry Pis, which is something 
+valuable to the project since the goal is to have a fleet of robots and not just one that works independtly.
+
+-dependency isolation: When utilizing stacks of libraries, we tipically need specific versions of tools to ensure
+compatibility. A virtual environment helps us have a version control while also isolating the dependencies. This
+way there will be no interference between the system packages and other packages outside this project.
+
+-system protection: Installing AI packages globally could break the system if anything goes wrong. This is
+especially hard to troubleshoot. Also, it's easier to wipe out the project out of the device in case the YOLO
+isntallation was not succesful.
+
+-Clean development environment: The venv allows us to have only compatible package versions of (in this case)
+ultralytics without the interference of anything already downloaded on the pi, such as a pre-installed python
+version.
+
+steps to create the environment:
+
+-put system up to date
+	sudo apt update
+	sudo apt upgrade
+	sudo apt install python3-pip -y
+
+-go to root
+	cd ~
+
+-create reu folder to host the environment
+	cd Desktop
+	mkdir reu
+
+-create and activate the virtual environmnet within reu folder
+	python3 -m venv ~/Desktop/reu
+	source bin/activate
+
+-update pip for easier troubleshooting and package compatibility
+	pip install -U pip
+
+see YOLO_installation.txt for the next steps
