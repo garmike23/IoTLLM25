@@ -1,0 +1,18 @@
+For this project, we are using YOLOV11n for object detection. This model provided
+us with the best inference and accuracy while keeping RAM usage at around 1GB,
+allowing for the allocation of resources to other tasks.
+
+-close the virtual environmnet and install all the needed dependencies
+	deactivate
+	sudo apt install python3-dev libatlas-base-dev libopenatlas-dev liblapack-dev gfortran
+	sudo apt install -y libcap-dev python3-dev
+	sudo apt install -y libcamera-dev libcamera-apps
+	sudo apt install -y python3-picamera2
+
+-installing ultralytics (this is a stack of libraries that work in conjuction 
+for different computer vision tasks). This is to be installed inside the 
+virtual environmnet
+	source ~/Desktop/IoTLLM25/bin/activate
+	pip install ultralytics
+
+see convert_to_ncnn.txt for the next steps
