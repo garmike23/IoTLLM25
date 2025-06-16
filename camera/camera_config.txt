@@ -2,9 +2,9 @@ For this project, we want to utilize the camera onboard the Raspberry Pi to grab
 feeds to perform inference.The onboard MIPI CSI connector on the Raspberry Pi allows to connect 
 on official Raspberry Pi camera modules. 
 
-Execute the following command after connecting to the Raspberry Pi. This shows the live camera 
-feed for about 5 seconds: 
+-Execute the following command after connecting to the Raspberry Pi. This shows the live camera 
+feed for about 5 seconds 
+  rpicam-hello
 
-  - rpicam-hello
-
-Perform inference with the Raspberry Pi Camera utilziing the yolov11n model: 
+-Perform inference with the Raspberry Pi Camera utilziing the yolov11n model
+  python3 camera_config.py
