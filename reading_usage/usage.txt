@@ -1,0 +1,8 @@
+This is a bash script that gets the CPU stats from "/proc/stat" and RAM stats from "free -m". Important to mention that this has to be run on a separate termnal by typing the following:
+  ./usage.sh
+important to note out that you have to be in the same directory where the file is found. If the file ever gets moved from its current directory, or it outputs an error message, then run the following
+in the same directory terminal:
+  chmod +x ./usage.sh #chmod changes the file permissions and +x includes the "executable" permission
+
+CPU usage is calculated by comparing for how long it was idle against the amount of time it was at use.
+RAM is calculated by substracting the cached RAM from the total to get the used amount of RAM.
