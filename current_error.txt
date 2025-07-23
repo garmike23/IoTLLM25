@@ -1,3 +1,39 @@
+-cause of error and prove:
+
+The lines: 
+
+RuntimeError: [enforce fail at inline_container.cc:857] . PytorchStreamWriter failed writing file data/71: file write failed
+...
+RuntimeError: [enforce fail at inline_container.cc:659] . unexpected pos 614727936 vs 614727824
+
+Indicate that it cant write data on the file durig the creation of a checkpoint. My first thought was to check memory availability.
+
+In order to do so, type on the terminal "df -h"
+
+Our specific output is:
+
+rover1@pi1:~/IoTLLM25 $ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+udev            1.6G     0  1.6G   0% /dev
+tmpfs           760M  9.4M  751M   2% /run
+/dev/mmcblk0p2   28G   27G  334M  99% /
+tmpfs           1.9G  420K  1.9G   1% /dev/shm
+tmpfs           5.0M   16K  5.0M   1% /run/lock
+/dev/mmcblk0p1  510M   78M  433M  16% /boot/firmware
+tmpfs           380M   48K  380M   1% /run/user/1000
+
+Line 4 indicates how we are currently occupying 99% of the storage.
+
+Possible solutions:
+
+To delete unsused files or get another microsd card with bigger capabilities.
+
+
+
+
+
+-Entire terminal output:
+
 (IoTLLM25) rover1@pi1:~/Desktop/IoTLLM25 $ python3 finetune_minilm_rpi.py 
 Map: 100%|██████████████████████████████████████████████████████████| 800/800 [00:00<00:00, 1225.49 examples/s]
 Map: 100%|██████████████████████████████████████████████████████████| 200/200 [00:00<00:00, 1931.32 examples/s]
