@@ -1,0 +1,50 @@
+(IoTLLM25) rover1@pi1:~/Desktop/IoTLLM25 $ python3 finetune_minilm_rpi.py 
+Map: 100%|██████████████████████████████████████████████████████████| 800/800 [00:00<00:00, 1225.49 examples/s]
+Map: 100%|██████████████████████████████████████████████████████████| 200/200 [00:00<00:00, 1931.32 examples/s]
+wandb: Tracking run with wandb version 0.21.0
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+/home/rover1/Desktop/IoTLLM25/finetune_minilm_rpi.py:95: FutureWarning: `tokenizer` is deprecated and will be removed in version 5.0.0 for `Trainer.__init__`. Use `processing_class` instead.
+  trainer = Trainer(
+2025-07-23 04:46:38,721 - Training DistilGPT-2 on Raspberry Pi 4B. This may take a while!
+  0%|                                                                                 | 0/1000 [00:00<?, ?it/s]/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/torch/utils/data/dataloader.py:665: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  warnings.warn(warn_msg)
+`loss_type=None` was set in the config but it is unrecognised.Using the default loss: `ForCausalLMLoss`.
+{'loss': 2.5986, 'grad_norm': 7.189018726348877, 'learning_rate': 1.982e-05, 'epoch': 0.05}                    
+{'loss': 1.9918, 'grad_norm': 6.250668048858643, 'learning_rate': 1.9620000000000002e-05, 'epoch': 0.1}        
+{'eval_loss': 1.6139065027236938, 'eval_runtime': 187.5924, 'eval_samples_per_second': 1.066, 'eval_steps_per_second': 0.267, 'epoch': 0.1}                                                                                   
+{'loss': 1.5286, 'grad_norm': 5.671999931335449, 'learning_rate': 1.942e-05, 'epoch': 0.15}                    
+{'loss': 1.1654, 'grad_norm': 5.4726481437683105, 'learning_rate': 1.9220000000000002e-05, 'epoch': 0.2}       
+{'eval_loss': 0.8926628232002258, 'eval_runtime': 190.6399, 'eval_samples_per_second': 1.049, 'eval_steps_per_second': 0.262, 'epoch': 0.2}                                                                                   
+  4%|██▊                                                                   | 40/1000 [15:34<3:45:42, 14.11s/itTraceback (most recent call last):                                                                              
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/torch/serialization.py", line 965, in save
+    _save(
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/torch/serialization.py", line 1266, in _save
+    zip_file.write_record(name, storage, num_bytes)
+RuntimeError: [enforce fail at inline_container.cc:857] . PytorchStreamWriter failed writing file data/71: file write failed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rover1/Desktop/IoTLLM25/finetune_minilm_rpi.py", line 105, in <module>
+    trainer.train()
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/transformers/trainer.py", line 2240, in train
+    return inner_training_loop(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/transformers/trainer.py", line 2622, in _inner_training_loop
+    self._maybe_log_save_evaluate(
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/transformers/trainer.py", line 3102, in _maybe_log_save_evaluate
+    self._save_checkpoint(model, trial)
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/transformers/trainer.py", line 3210, in _save_checkpoint
+    self._save_optimizer_and_scheduler(output_dir)
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/transformers/trainer.py", line 3337, in _save_optimizer_and_scheduler
+    torch.save(self.optimizer.state_dict(), os.path.join(output_dir, OPTIMIZER_NAME))
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/torch/serialization.py", line 964, in save
+    with _open_zipfile_writer(f) as opened_zipfile:
+  File "/home/rover1/Desktop/IoTLLM25/lib/python3.11/site-packages/torch/serialization.py", line 798, in __exit__
+    self.file_like.write_end_of_file()
+RuntimeError: [enforce fail at inline_container.cc:659] . unexpected pos 614727936 vs 614727824
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /home/rover1/Desktop/IoTLLM25/wandb/offline-run-20250723_044635-d3k78tsk
+wandb: Find logs at: wandb/offline-run-20250723_044635-d3k78tsk/logs
+
