@@ -1,0 +1,14 @@
+sudo apt update && sudo apt upgrade -y
+
+# Basic build tools and libraries
+sudo apt install -y python3-pip python3-venv git
+
+# Optional: for WANDB and data logging
+sudo apt install -y libglib2.0-dev libsm6 libxrender-dev libxext6
+
+python3 -m venv ~/iotllm-env
+source ~/iotllm-env/bin/activate
+pip install --upgrade pip setuptools wheel
+
+pip install torch==2.1.0 --extra-index-url https://download.pytorch.org/whl/cpu
+pip install transformers datasets pandas wandb
