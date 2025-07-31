@@ -1,0 +1,10 @@
+sudo apt update && sudo apt upgrade -y
+
+# Basic build tools and libraries
+sudo apt install -y python3-pip python3-venv git
+
+# Optional: for WANDB and data logging
+sudo apt install -y libglib2.0-dev libsm6 libxrender-dev libxext6
+
+pip install transformers datasets pandas numpy matplotlib psutil onnx onnxruntime onnxruntime-tools
+pip install torch==1.13.0+cpu torchvision==0.14.0+cpu torchaudio==0.13.0+cpu -f https://torch.kmtea.eu/whl/cpu
