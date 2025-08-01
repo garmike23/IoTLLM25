@@ -7,9 +7,9 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 
-onnx_path = "/aul/homes/ccarr192/Desktop/DistilGPT2/distilgpt2_int8.onnx"
-tokenizer_path = "/aul/homes/ccarr192/Desktop/DistilGPT2/distilgpt2_82m_output"
-dataset_path = "/aul/homes/ccarr192/Desktop/DistilGPT2/mc_scenario.json"
+onnx_path = "/full/path/to/onnx/file"
+tokenizer_path = "/path/of/folder/created/after/training/completed"
+dataset_path = "/full/path/of/mc_scenario.json"
 
 def format_input(scenario, question):
     return f"Scenario: {scenario}\nQuestion: {question}\nAnswer:"
