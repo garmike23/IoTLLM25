@@ -17,23 +17,33 @@ version.
 
 steps to create the environment:
 
--put system up to date
-	sudo apt update
-	sudo apt upgrade
-	sudo apt install python3-pip -y
+	cd ~/Desktop/IoTLLM25/
 
--go to root
-	cd ~
+	chmod +x venv_and_dependencies.sh
 
--create reu folder to host the environment
-	cd Desktop
-	mkdir IoTLLM25
-	cd IoTLLM25
--create and activate the virtual environmnet within IoTLLM25 folder. (--system-site-packages) allows for utilization of libcamera and other vision libraries to use in real-time camera inferences.
-	python3 -m venv --system-site-packages IoTLLM25 
-	source bin/activate
+	./venv_and_dependencies.sh
 
--update pip for easier troubleshooting and package compatibility
-	pip install -U pip
+Direct yourself to SLMs to start training your model:
+	cd SLMs/
 
-see YOLO_installation.txt for the next steps
+(recommended)If you want to use DistilGPT2, run:
+
+	chmod +x distilgpt2_process.sh
+
+	./distilgpt2_process.sh
+
+If you want to use GPT2, run:
+
+	chmod +x gpt2_process.sh
+
+	./gpt2_process.sh
+
+If you want to use OPT, run:
+
+	chmod +x opt_process.sh
+
+	./opt_process.sh
+
+If all the models are trained and tested, then you can run spider.py to compare them in a radar graph format:
+	
+	python3 spider.py

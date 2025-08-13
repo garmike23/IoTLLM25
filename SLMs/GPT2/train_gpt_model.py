@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import matplotlib.pyplot as plt
 from datasets import Dataset
 from transformers import (
     AutoTokenizer,
@@ -8,25 +9,22 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling,
 )
-from peft import get_peft_model, LoraConfig, TaskType
-
 import logging
-import wandb
 
-# --- Logging ---
+# ---- Logging ----
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
-# --- Paths ---
-data_path = "test_dataset.json"   # <-- Change to your dataset
-model_output_dir = "./opt_125m_lora_output"
+# ---- Paths ----
+data_path = "~/Desktop/IoTLLM25/SLMs/datasets/dataset.json"  # full data path
+model_output_dir = "./gpt2_output"
+
 os.makedirs(model_output_dir, exist_ok=True)
 
-# --- Load dataset ---
+# ---- Load dataset ----
 df = pd.read_json(data_path)
 
-# --- Create prompts ---
+# ---- Create prompts ----
 df["prompt"] = (
     "Scenario: " + df["scenario"].astype(str) +
     "\nQuestion: " + df["question"].astype(str) +
@@ -34,30 +32,20 @@ df["prompt"] = (
 )
 df["text"] = df["prompt"] + " " + df["answer"].astype(str)
 
-# --- Train/eval split ---
+# ---- Train/eval split ----
 train_df = df.sample(frac=0.8, random_state=42)
 eval_df = df.drop(train_df.index)
 train_dataset = Dataset.from_pandas(train_df)
 eval_dataset = Dataset.from_pandas(eval_df)
 
-# --- Model and tokenizer ---
-model_id = "facebook/opt-125m"
-tokenizer = AutoTokenizer.from_pretrained(model_id)
+# ---- Load local tokenizer and model ----
+tokenizer = AutoTokenizer.from_pretrained("./gpt2_local")
 tokenizer.pad_token = tokenizer.eos_token
 
-model = AutoModelForCausalLM.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained("./gpt2_local")
 model.resize_token_embeddings(len(tokenizer))
 
-# ---- Add LoRA ---
-lora_config = LoraConfig(
-    task_type=TaskType.CAUSAL_LM,
-    r=8,
-    lora_alpha=16,
-    lora_dropout=0.05,
-)
-model = get_peft_model(model, lora_config)
-
-# --- Tokenize ---
+# ---- Tokenize ----
 def tokenize_fn(batch):
     return tokenizer(
         batch["text"],
@@ -71,38 +59,50 @@ eval_dataset = eval_dataset.map(tokenize_fn, batched=True)
 train_dataset.set_format(type="torch", columns=["input_ids", "attention_mask"])
 eval_dataset.set_format(type="torch", columns=["input_ids", "attention_mask"])
 
-# --- Data collator ---
+# ---- Data collator ----
 data_collator = DataCollatorForLanguageModeling(
     tokenizer=tokenizer, mlm=False
 )
 
-# --- WANDB Integration ---
-wandb.init(
-    project="carqa-opt125m",
-    name="opt125m_lora-pi4b-finetune"
-)
+# ---- Loss tracking ----
+train_losses = []
+eval_losses = []
 
-# --- Training arguments ---
+from transformers import TrainerCallback
+
+class LossLoggerCallback(TrainerCallback):
+    """Custom callback to log training and evaluation loss for plotting"""
+    
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        if logs is None:
+            return
+        if "loss" in logs:
+            train_losses.append(logs["loss"])
+        if "eval_loss" in logs:
+            eval_losses.append(logs["eval_loss"])
+
+    def on_init_end(self, args, state, control, **kwargs):
+        pass  # fixes AttributeError
+
+# ---- Training arguments ----
 training_args = TrainingArguments(
     output_dir=model_output_dir,
-    eval_strategy="steps",
-    eval_steps=300,
+    evaluation_strategy="steps",
+    eval_steps=40,
     save_strategy="steps",
-    save_steps=3000,
+    save_steps=300,
     save_total_limit=1,
     per_device_train_batch_size=3,
     per_device_eval_batch_size=3,
-    num_train_epochs=30,
+    num_train_epochs=9,
     logging_steps=10,
     learning_rate=1e-5,
-    fp16=False,
+    fp16=False,  # Pi doesn't support fp16 training
     push_to_hub=False,
-    report_to=["wandb"],
-    run_name="opt125m-pi4b-finetune",
     disable_tqdm=False,
 )
 
-# --- Trainer ---
+# ---- Trainer ----
 trainer = Trainer(
     model=model,
     args=training_args,
@@ -110,10 +110,26 @@ trainer = Trainer(
     eval_dataset=eval_dataset,
     tokenizer=tokenizer,
     data_collator=data_collator,
+    callbacks=[LossLoggerCallback()],
 )
 
-logger.info("Training OPT-125M on Raspberry Pi 4B")
+logger.info("Training gpt2_local on Raspberry Pi 5. This may take a while!")
 trainer.train()
 logger.info("Done! Saving final model.")
 trainer.save_model(model_output_dir)
 tokenizer.save_pretrained(model_output_dir)
+
+# ---- Plot and save loss curves ----
+plt.figure(figsize=(8, 5))
+plt.plot(train_losses, label="Training Loss")
+plt.plot(eval_losses, label="Evaluation Loss")
+plt.xlabel("Logging Step")
+plt.ylabel("Loss")
+plt.title("Training and Evaluation Loss (gpt2_local)")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.savefig("gpt2_local_training_eval_loss.png")
+plt.close()
+
+logger.info("Loss plot saved to gpt2_local_training_eval_loss.png")

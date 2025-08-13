@@ -9,7 +9,6 @@ from transformers import (
     Trainer,
     DataCollatorForLanguageModeling,
 )
-# from peft import get_peft_model, LoraConfig, TaskType
 import logging
 
 # ---- Logging ----
@@ -17,20 +16,8 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 # ---- Paths ----
-data_path = "/home/"  #full data path
-
-# ---- Choose your model ----
-# DistilGPT-2 (~82M)
-model_id = "distilgpt2"
+data_path = "~/Desktop/IoTLLM25/SLMs/datasets/dataset.json"  # full data path
 model_output_dir = "./distilgpt2_output"
-
-# GPT-2 (~124M)
-# model_id = "gpt2"
-# model_output_dir = "./gpt2_output"
-
-# OPT (~125M)
-# model_id = "facebook/opt-125m"
-# model_output_dir = "./opt125m_output"
 
 os.makedirs(model_output_dir, exist_ok=True)
 
@@ -51,21 +38,12 @@ eval_df = df.drop(train_df.index)
 train_dataset = Dataset.from_pandas(train_df)
 eval_dataset = Dataset.from_pandas(eval_df)
 
-# ---- Model and tokenizer ----
-tokenizer = AutoTokenizer.from_pretrained(model_id)
+# ---- Load local tokenizer and model ----
+tokenizer = AutoTokenizer.from_pretrained("./distilgpt2_local")
 tokenizer.pad_token = tokenizer.eos_token
 
-model = AutoModelForCausalLM.from_pretrained(model_id)
+model = AutoModelForCausalLM.from_pretrained("./distilgpt2_local")
 model.resize_token_embeddings(len(tokenizer))
-
-# ---- Add LoRA (commented out) ---
-# lora_config = LoraConfig(
-#     task_type=TaskType.CAUSAL_LM,
-#     r=8,
-#     lora_alpha=16,
-#     lora_dropout=0.05,
-# )
-# model = get_peft_model(model, lora_config)
 
 # ---- Tokenize ----
 def tokenize_fn(batch):
@@ -90,8 +68,11 @@ data_collator = DataCollatorForLanguageModeling(
 train_losses = []
 eval_losses = []
 
-class LossLoggerCallback:
+from transformers import TrainerCallback
+
+class LossLoggerCallback(TrainerCallback):
     """Custom callback to log training and evaluation loss for plotting"""
+    
     def on_log(self, args, state, control, logs=None, **kwargs):
         if logs is None:
             return
@@ -99,6 +80,9 @@ class LossLoggerCallback:
             train_losses.append(logs["loss"])
         if "eval_loss" in logs:
             eval_losses.append(logs["eval_loss"])
+
+    def on_init_end(self, args, state, control, **kwargs):
+        pass  # fixes AttributeError
 
 # ---- Training arguments ----
 training_args = TrainingArguments(
@@ -129,7 +113,7 @@ trainer = Trainer(
     callbacks=[LossLoggerCallback()],
 )
 
-logger.info(f"Training {model_id} on Raspberry Pi 4B. This may take a while!")
+logger.info("Training opt_local on Raspberry Pi 5. This may take a while!")
 trainer.train()
 logger.info("Done! Saving final model.")
 trainer.save_model(model_output_dir)
@@ -141,11 +125,11 @@ plt.plot(train_losses, label="Training Loss")
 plt.plot(eval_losses, label="Evaluation Loss")
 plt.xlabel("Logging Step")
 plt.ylabel("Loss")
-plt.title(f"Training and Evaluation Loss ({model_id})")
+plt.title("Training and Evaluation Loss (distilgpt2_local)")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
-plt.savefig(f"{model_id.replace('/', '_')}_training_eval_loss.png")
+plt.savefig("distilgpt2_local_training_eval_loss.png")
 plt.close()
 
-logger.info(f"Loss plot saved to {model_id.replace('/', '_')}_training_eval_loss.png")
+logger.info("Loss plot saved to distilgpt2_local_training_eval_loss.png")
