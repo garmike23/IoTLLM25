@@ -7,10 +7,13 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 # === Paths ===
-onnx_path = "./opt_output_int8.onnx"
-tokenizer_path = "./opt_output"
-dataset_path = "~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json"  # Your test set
+onnx_path = expand("./opt_output_int8.onnx")
+tokenizer_path = expand("./opt_output")
+dataset_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json")  # Your test set
 
 # === Helpers ===
 def format_input(scenario, question):
@@ -86,7 +89,7 @@ for idx, item in enumerate(dataset):
     print(f"   Time: {latency}s | RAM: {ram_before:.2f}->{ram_after:.2f} MB | CPU: {cpu_usage:.2f}%\n")
 
 # === Save plots ===
-desktop_path = os.path.expanduser("~/Desktop/IoTLLM25/SLMs/OPT/Graphs/")
+desktop_path = os.path.expanduser(expand("~/Desktop/IoTLLM25/SLMs/OPT/Graphs/"))
 
 plt.figure(figsize=(10, 5))
 plt.bar(range(1, len(all_times)+1), all_times, color='teal')

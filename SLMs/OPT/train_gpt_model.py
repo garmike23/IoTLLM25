@@ -11,13 +11,16 @@ from transformers import (
 )
 import logging
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+    
 # ---- Logging ----
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 # ---- Paths ----
-data_path = "~/Desktop/IoTLLM25/SLMs/datasets/dataset.json"  # full data path
-model_output_dir = "./opt_output"
+data_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/dataset.json") # full data path
+model_output_dir = expand("./opt_output")
 
 os.makedirs(model_output_dir, exist_ok=True)
 

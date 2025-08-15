@@ -1,7 +1,10 @@
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 model_id = "distilgpt2"
-output_path = "./distilgpt2_local"
+output_path = expand("./distilgpt2_local")
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 model = AutoModelForCausalLM.from_pretrained(model_id)

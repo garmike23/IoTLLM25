@@ -11,13 +11,16 @@ from transformers import (
 )
 import logging
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 # ---- Logging ----
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(message)s")
 logger = logging.getLogger(__name__)
 
 # ---- Paths ----
-data_path = "~/Desktop/IoTLLM25/SLMs/datasets/dataset.json"  # full data path
-model_output_dir = "./distilgpt2_output"
+data_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/dataset.json") 
+model_output_dir = expand("./distilgpt2_output")
 
 os.makedirs(model_output_dir, exist_ok=True)
 
@@ -39,10 +42,10 @@ train_dataset = Dataset.from_pandas(train_df)
 eval_dataset = Dataset.from_pandas(eval_df)
 
 # ---- Load local tokenizer and model ----
-tokenizer = AutoTokenizer.from_pretrained("./distilgpt2_local")
+tokenizer = AutoTokenizer.from_pretrained(expand("./distilgpt2_local"))
 tokenizer.pad_token = tokenizer.eos_token
 
-model = AutoModelForCausalLM.from_pretrained("./distilgpt2_local")
+model = AutoModelForCausalLM.from_pretrained(expand("./distilgpt2_local"))
 model.resize_token_embeddings(len(tokenizer))
 
 # ---- Tokenize ----

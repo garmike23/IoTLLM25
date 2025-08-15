@@ -2,9 +2,12 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from onnxruntime.quantization import quantize_dynamic, QuantType
 
-model_dir = "./distilgpt2_output"
-onnx_fp32_path = "./distilgpt2_output.onnx"
-onnx_int8_path = "./distilgpt2_output_int8.onnx"
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
+model_dir = expand("./distilgpt2_output")
+onnx_fp32_path = expand("./distilgpt2_output.onnx")
+onnx_int8_path = expand("./distilgpt2_output_int8.onnx")
 
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 model = AutoModelForCausalLM.from_pretrained(model_dir)

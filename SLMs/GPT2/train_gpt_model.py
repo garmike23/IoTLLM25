@@ -39,10 +39,10 @@ train_dataset = Dataset.from_pandas(train_df)
 eval_dataset = Dataset.from_pandas(eval_df)
 
 # ---- Load local tokenizer and model ----
-tokenizer = AutoTokenizer.from_pretrained("./gpt2_local")
+tokenizer = AutoTokenizer.from_pretrained(expand("./gpt2_local"))
 tokenizer.pad_token = tokenizer.eos_token
 
-model = AutoModelForCausalLM.from_pretrained("./gpt2_local")
+model = AutoModelForCausalLM.from_pretrained(expand("./gpt2_local"))
 model.resize_token_embeddings(len(tokenizer))
 
 # ---- Tokenize ----

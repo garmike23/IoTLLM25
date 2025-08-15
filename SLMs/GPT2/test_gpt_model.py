@@ -7,10 +7,13 @@ import numpy as np
 import json
 import matplotlib.pyplot as plt
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 # === Paths ===
-onnx_path = "./gpt2_output_int8.onnx"
-tokenizer_path = "./gpt2_output"
-dataset_path = "~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json"  # Your test set
+onnx_path = expand("./gpt2_output_int8.onnx")
+tokenizer_path = expand("./gpt2_output")
+dataset_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json")
 
 # === Helpers ===
 def format_input(scenario, question):

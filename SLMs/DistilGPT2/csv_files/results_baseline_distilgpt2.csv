@@ -1,0 +1,100 @@
+answer,ram_before,ram_after,cpu_usage,inference_time
+I wait until the truck is clear of the road before proceeding.,622.34375,821.890625,90.642,46.641
+"Kids can step into the street without warning, so I slow down to avoid hitting them.",805.40625,849.015625,92.154,50.528
+"Left turns can be unpredictable, so I keep a distance until the car is clear.",801.984375,845.875,91.82799999999999,44.101
+I’m changing lanes to avoid any hazards.,845.875,847.78125,91.944,47.057
+"Motorcycles can move unpredictably, so I stop to avoid hitting them.",801.90625,845.40625,91.912,44.517
+"Cyclists can move unpredictably, so I wait until they’re safely across.",845.40625,846.984375,91.79,45.806
+"Fog causes visibility to be poor, so I turn on the fog lights to see if they’re safe.",846.984375,846.9375,91.626,44.698
+"Police cars can be unpredictable, so I wait until they’re done.",802.203125,846.53125,91.83599999999998,44.486
+"The detour is closed, so I follow the detour to avoid any hazards.",802.375,848.78125,91.73,44.304
+"Dogs can step into the road unexpectedly, so I watch closely.",801.171875,847.796875,91.62799999999999,45.263
+I’m passing slowly to avoid hitting the tractor.,802.484375,847.828125,92.00200000000001,45.684
+"Children can step into the crosswalk without warning, so I wait until they’re safely across.",802.546875,851.03125,91.656,44.971
+"Water can block the view, so I slow down to avoid any damage.",805.15625,850.5625,91.834,48.002
+I slowed down to avoid any sudden bumps and avoid them.,805.25,848.640625,92.14599999999999,45.495
+"Water can spill into the street, so I wait until it’s clear.",848.640625,853.3125,91.86400000000002,44.901
+"Parade closures mean people can cross, so I turn around to avoid them.",805.125,846.984375,92.12599999999999,45.069
+"Workers can step into the street without warning, so I wait until they’re safely across.",846.984375,848.703125,91.67000000000002,43.67
+I go through the flashing yellow to avoid any confusion.,848.703125,849.5625,91.652,44.282
+I'm under the weight limit to keep the bridge safe for everyone.,805.40625,848.140625,91.72599999999998,44.826
+"Joggers can cross unexpectedly, so I yield to avoid hitting them.",848.140625,849.96875,91.90799999999999,44.056
+"Deer can move unpredictably, so I’m extra alert to keep them safe.",805.234375,847.796875,92.02599999999998,45.698
+"Snow is slippery and slippery, so I reduce speed to avoid hitting the windshield.",847.796875,848.78125,92.11399999999999,46.147
+"Children can step into the road without warning, so I slow down to avoid hitting them.",848.78125,850.203125,91.528,44.523
+"I increased to avoid any danger, so I always stay alert.",805.46875,848.65625,91.642,43.413
+"Construction cones can block the view, so I wait until the lane is clear.",848.65625,847.09375,91.62200000000001,42.422
+"Railroad crossings can be dangerous, so I stop to avoid hitting them.",847.09375,849.15625,91.994,44.756
+"Cyclists can step into the road without warning, so I watch closely.",849.15625,850.1875,91.766,45.004
+"I’m not going around the hazard lights, so I go around them to avoid them.",805.453125,847.875,91.99600000000001,44.954
+"Slow moving funeral procession members can step into the street, so I wait until they’re done.",847.875,849.453125,91.68199999999997,43.947
+"Moving vans can block the view, so I wait until it’s clear.",805.296875,850.765625,91.954,45.561
+"Emergency alerting means you’re in a safe spot, so I’m going to pull over to avoid any damage.",804.890625,847.609375,91.94999999999999,44.424
+"I’m not going to let them go, so I wait until they’re done.",847.609375,849.296875,91.79199999999999,44.222
+"I’m moving over to avoid the branch, so I move over to avoid the branch.",849.296875,849.09375,91.916,44.633
+"Taxi drivers can step into the street without warning, so I brake to avoid hitting them.",849.09375,848.3125,91.48200000000001,43.405
+I follow the officer's hand signals to avoid any accidents.,848.3125,849.734375,92.04199999999999,45.978
+"Slow trains can block the view, so I turn back and watch closely.",805.578125,850.078125,91.772,45.299
+"Disabled vehicles can move unpredictably, so I move over to avoid them.",805.34375,851.484375,92.1,45.913
+"Automatic turns can be unpredictable, so I wait until the turn is clear.",804.453125,851.171875,91.774,42.59
+"Street sweepers can block the view, so I’m keeping a safe distance.",805.296875,850.71875,91.79800000000002,43.363
+"I’m more cautious in areas with fallen rocks, so I’m cautious in areas with fallen rocks.",805.984375,850.671875,91.542,44.009
+"Lights can be unpredictable, so I wait until they’re done.",805.9375,849.75,91.76799999999999,45.892
+"Cyclists can make sudden movements, so I adjust their speed to avoid it.",849.75,851.109375,91.84399999999998,44.778
+"Stations can be slippery, so I wait until they’re clear.",806.375,850.4375,92.81800000000001,71.219
+I’m taking a detour to avoid any sudden detour.,806.28125,848.84375,92.542,56.9
+Low light means I’m not going to turn around for the streetlights. I’m going to wait until they’re clear.,848.84375,848.625,91.77,43.641
+"Parked cars can be unpredictable, so I wait until they're safely across.",848.625,849.796875,91.648,43.423
+"Birds can fly unpredictably, so I wait until it’s clear.",849.796875,849.90625,92.17000000000002,46.738
+"People can step into the street without warning, so I watch closely.",805.75,850.515625,91.866,45.279
+I’m going to make sure I’m not overpassing the new intersection.,806.359375,849.96875,91.916,45.343
+"Street fairs can be hard to see, so I merge to avoid any hazards.",849.96875,850.0,92.008,44.828
+"Heavy debris can fall into the road, so I’m taking extra precautions to avoid it.",850.0,848.265625,91.686,44.698
+I’m going to check for signs to be clear.,848.265625,850.375,91.766,43.336
+"Slow speeds can be unpredictable, so I always keep a safe distance.",806.21875,847.953125,91.70000000000002,42.509
+"Scooters can move unpredictably, so I watch closely to see if they’re moving.",847.953125,851.78125,92.022,44.979
+I trust the driver to give them the right of way.,805.90625,850.828125,91.984,44.269
+I keep a lane marked for safety and safety.,806.09375,850.453125,91.72399999999999,45.658
+I’m not going over the loose cover until it’s clear.,850.453125,850.578125,91.74600000000001,45.318
+I stayed behind to avoid any damage.,850.578125,851.734375,91.77,42.952
+"I’m not going to risk any accidents, so I’m going to keep my distance.",805.859375,850.578125,91.976,44.919
+"People can step into the car without warning, so I wait until it’s safe.",806.421875,850.8125,92.14200000000001,46.061
+"Potholes can block vision, so I slow down to avoid them.",850.8125,850.34375,91.67600000000002,44.13
+"Yes, I stop to check for any damage.",850.34375,849.78125,92.06599999999999,44.738
+"Motorcycles can move unpredictably, so I wait until they’re safely across.",849.78125,848.265625,91.87400000000001,45.757
+I slowed to avoid hitting the tracks and avoid hitting the tracks.,848.265625,850.4375,91.51800000000001,43.774
+I adjust my speed to avoid any sudden movement.,806.28125,849.484375,91.838,43.359
+"Pets can be unpredictable, so I drive slowly to avoid them.",849.484375,850.421875,91.892,45.937
+"Large debris can block the view, so I wait until it’s clear.",806.265625,848.375,91.584,44.107
+"Dogs can be unpredictable, so I keep extra distance to avoid them.",848.375,850.46875,91.926,44.468
+I slowed down to avoid any accidents.,805.734375,850.703125,91.86399999999999,45.121
+I’m using a new light to keep everyone safe.,805.96875,848.953125,91.80799999999999,45.062
+"Workers can step into the road without warning, so I wait until they're done.",848.953125,853.015625,91.678,45.566
+"Parade cars can move unpredictably, so I stay back to avoid any danger.",805.984375,850.59375,91.944,45.89
+"Families can cross unexpectedly, so I wait until they’re safely across.",806.4375,850.140625,91.97,45.79
+"Open water can block the flow, so I stop back to avoid any hazards.",850.140625,850.5,91.978,47.302
+"Car alarms can be loud, so I take extra time to check for them.",850.5,850.734375,91.696,44.388
+"Crowds can move unpredictably, so I slow down to stay alert.",806.0,849.640625,91.516,42.739
+I’m giving them room to cross safely.,849.640625,850.15625,91.63799999999999,44.673
+"Water main breaks can cause water to flow, so I take a different route.",806.0,850.921875,91.92800000000001,45.279
+I yield to the procession to keep everyone safe.,806.1875,848.984375,91.56400000000002,41.528
+"Blind people can be unpredictable, so I stop to be cautious.",848.984375,851.515625,91.972,45.707
+"Crowds can move unpredictably, so I’m keeping an eye on the road to avoid any accidents.",806.203125,849.671875,91.844,44.401
+I’m waiting to see if the bus is safe to pass.,849.671875,852.515625,92.07799999999999,45.437
+"Joggers can move unpredictably, so I wait until they’re safely across.",806.0625,853.015625,92.13,47.314
+"Trees can hide hazards, so I wait until they're clear.",805.984375,851.78125,91.69400000000002,44.722
+"Wet tracks can be slippery, so I wait until they’re clear.",806.46875,851.546875,91.824,45.304
+"Police are not going around the street, so I reroute to avoid any danger.",805.671875,851.90625,91.80999999999999,45.104
+"Jays can be unpredictable, so I slow down to let them know I’m not slowing down.",806.03125,851.6875,91.72200000000001,44.363
+"I always keep a safe distance from the truck, so I keep a safe distance.",851.6875,850.359375,91.77799999999999,45.34
+"People can step into the street without warning, so I slow down to avoid any danger.",806.203125,851.875,92.014,45.665
+"Cyclists with limited mobility can cross unexpectedly, so I wait until they're safely across.",806.0,849.953125,91.57,42.948
+I slow down to avoid hitting the bins and keep them safe.,849.953125,851.765625,92.138,47.336
+"Foreign license plates can be hard to see, so I wait until they’re clear.",851.765625,850.34375,91.87799999999999,45.223
+"Robots can move unpredictably, so I yield to avoid them.",806.1875,848.421875,91.686,44.464
+"Loose animals can be unpredictable, so I’m extra alert to watch closely.",848.421875,851.59375,91.816,44.926
+"Tarp flapping can be dangerous, so I stay alert and alert.",851.59375,852.140625,91.47999999999998,43.258
+"RV users can step into the road without warning, so I wait until they’re done.",806.265625,853.03125,92.16,45.043
+"The convertible is moving slowly, so I wait until it’s clear.",806.0,851.78125,91.986,43.509
+"Water can be slippery, so I wait until it’s clear.",806.46875,851.546875,91.72399999999999,44.662
+"Large packages can block the view, so I give more room to keep the bike safe.",805.671875,851.8125,92.20199999999998,47.229

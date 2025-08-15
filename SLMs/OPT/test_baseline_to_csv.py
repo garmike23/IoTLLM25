@@ -7,10 +7,13 @@ import numpy as np
 import json
 import csv
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 # === Paths ===
-model_path = "./opt_output"
-dataset_path = "~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json"
-csv_path = "./results_baseline_opt.csv"
+model_path = expand("./opt_output")
+dataset_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json")
+csv_path = expand("./results_baseline_opt.csv")
 
 # === Helpers ===
 def format_input(scenario, question):

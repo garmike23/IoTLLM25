@@ -7,12 +7,15 @@ import numpy as np
 import json
 import csv
 
+def expand(path):
+    return os.path.expanduser(os.path.expandvars(path))
+
 # ==== Set these per model ====
-model_type = "onnx_fp32"  # Change to "onnx_fp32", "baseline", etc
-onnx_path = "./opt_output.onnx"  # Change for each model
-tokenizer_path = "./opt_output"
-dataset_path = "~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json"
-output_csv = "results_onnx_fp32_opt.csv"
+model_type = "onnx_fp32" 
+onnx_path = expand("./opt_output.onnx")
+tokenizer_path = expand("./opt_output")
+dataset_path = expand("~/Desktop/IoTLLM25/SLMs/datasets/mc_dataset.json")
+output_csv = expand("results_onnx_fp32_opt.csv")
 
 def format_input(scenario, question):
     return f"Scenario: {scenario}\nQuestion: {question}\nAnswer:"
